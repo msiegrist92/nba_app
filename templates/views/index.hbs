@@ -4,34 +4,41 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Alata&family=Bitter:wght@300&display=swap" rel="stylesheet">
+
 </head>
 <body>
-  <table>
-    <tr>
-      <th>Name</th>
-      <th>Team</th>
-      <th>Season</th>
-      <th>G</th>
-      <th>Min</th>
-      <th>Pts</th>
-      <th>Reb</th>
-      <th>Ast</th>
-      <th>FGP</th>
-      <th>FTP</th>
-    </tr>
-    <tr>
-      <td id="name"></td>
-      <td id="team"></td>
-      <td id="season"></td>
-      <td id="games"></td>
-      <td id="minutes"></td>
-      <td id="points"></td>
-      <td id="rebounds"></td>
-      <td id="assists"></td>
-      <td id="fgp"></td>
-      <td id="ftp"></td>
-    </tr>
-  </table>
+  {{>header}}
+  <main>
+    <h2>Player of the Day</h2>
+    <p>(Stats from player's final season)</p>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Team</th>
+        <th>Season</th>
+        <th>G</th>
+        <th>Min</th>
+        <th>Pts</th>
+        <th>Reb</th>
+        <th>Ast</th>
+        <th>FGP</th>
+        <th>FTP</th>
+      </tr>
+      <tr>
+        <td id="name"></td>
+        <td id="team"></td>
+        <td id="season"></td>
+        <td id="games"></td>
+        <td id="min"></td>
+        <td id="pts"></td>
+        <td id="reb"></td>
+        <td id="ast"></td>
+        <td id="fgp"></td>
+        <td id="ftp"></td>
+      </tr>
+    </table>
+  </main>
   <script src="../js/potd.js"></script>
 </body>
 </html>

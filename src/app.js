@@ -12,10 +12,13 @@ const app = express();
 //define paths
 const public_dir = path.join(__dirname, "../public");
 const views_path = path.join(__dirname, "../templates/views");
+const partials_path = path.join(__dirname, "../templates/partials");
 
 //configure handlebars
 app.set('view engine', 'hbs');
 app.set('views', views_path);
+hbs.registerPartials(partials_path);
+
 
 //configure static directory
 app.use(express.static(public_dir));
@@ -57,7 +60,7 @@ app.get('/last_avgs', (req, res) => {
       })
     } else {
       res.send({
-        games_played: body.games_played,
+        games: body.games,
         min: body.min,
         season: body.season,
         minutes: body.minutes,

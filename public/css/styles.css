@@ -1,5 +1,100 @@
+/*
+rgba(255, 0, 72, 1) - pinkish red
+rgba(0, 81, 255, 1) - royal blue
+rgba(245, 249, 255, 1) - pale white
+rgba(56, 56, 56, 1) - dark grey
+*/
+
 body {
-  background-color: black;
-  color: white;
+  background-color: rgba(245, 249, 255, 1);
+  color: rgba(56, 56, 56, 1);
   margin: 0;
+}
+
+main {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+table {
+  width: 75%;
+  margin: 0 auto;
+  padding: .5rem;
+  text-align: center;
+}
+
+tr, th, td {
+  padding: .5rem;
+}
+
+tr {
+  font-size: 1.25rem;
+}
+
+td {
+  font-size: 1rem;
+  font-family: 'Bitter', serif;
+}
+
+th {
+  border-bottom: 2px solid rgba(0, 81, 255, 1);
+}
+
+h2 {
+  width: 75%;
+  margin: 2% auto 0 auto;
+  padding: .5rem;
+  text-align: center;
+  font-size: 2rem;
+  font-family: "Alata", sans-serif;
+}
+
+p {
+  width: 75%;
+  margin: 0 auto;
+  font-style: italic;
+  text-align: center;
+  font-size: .75rem;
+  font-family: Arial, sans-serif;
+}
+
+header {
+  display: grid;
+  grid-template-rows: 100%;
+  grid-template-columns: 15% 20% 45% 20%;
+  grid-template-areas:
+    "title sub . nav";
+  align-items: center;
+  border-bottom: 2px solid rgba(255, 0, 72, 1);
+  font-family: "Alata", sans-serif;
+}
+
+#title {
+  grid-area: title;
+  width: 100%;
+  margin-left: 5%;
+}
+
+#sub {
+  grid-area: sub;
+  margin-left: 2%;
+  height: 20%;
+}
+
+nav {
+  grid-area: nav;
+}
+
+nav ul {
+  display: inline-block;
+}
+
+nav ul li {
+  display: inline-block;
+  text-decoration: none;
+  padding: 0 .5rem 0 .5rem;
+}
+
+nav ul li a {
+  text-decoration: none;
 }

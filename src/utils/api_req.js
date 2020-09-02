@@ -19,7 +19,7 @@ const getPlayerStats = (id, season, callback) => {
       getPlayerStats(id, season - 1, callback)
     } else {
       callback(undefined, {
-        games_played: body.data[0].games_played,
+        games: body.data[0].games_played,
         min: body.data[0].min,
         season: body.data[0].season,
         fgpct: body.data[0].fg_pct,
@@ -34,6 +34,7 @@ const getPlayerStats = (id, season, callback) => {
 
 const randomPlayer = (callback) => {
   const playerID = getRandomPlayerID();
+  // const playerID = 401;
   const url = 'https://www.balldontlie.io/api/v1/players/' + playerID;
 
   request({url, json: true}, (error, {body}) => {

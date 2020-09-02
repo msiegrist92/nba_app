@@ -5,15 +5,20 @@ fetch('/potd').then((response) => {
     const player_id = data.id;
     fetch('/last_avgs?id=' + player_id).then((response) => {
       response.json().then((data) => {
-        document.getElementById('season').textContent= data.season;
-        document.getElementById('games').textContent= data.games_played;
-        document.getElementById('minutes').textContent= data.min;
-        document.getElementById('points').textContent= data.pts;
-        document.getElementById('rebounds').textContent= data.reb;
-        document.getElementById('assists').textContent= data.ast;
-        document.getElementById('fgp').textContent= data.fgpct;
-        document.getElementById('ftp').textContent= data.ftpct;
+        const table = {
+          season: ['season', data.season],
+          games: ['games', data.games],
+          min: ["min", data.min],
+          pts: ["pts", data.pts],
+          reb: ["reb", data.reb],
+          ast: ['ast', data.ast],
+          fgp: ["fgp", data.fgpct],
+          ftp: ['ftp', data.ftpct]
+        }
+        for(prop in table){
+          document.getElementById(table[prop][0]).textContent = table[prop][1];
+          }
+        })
       })
     })
   })
-})
