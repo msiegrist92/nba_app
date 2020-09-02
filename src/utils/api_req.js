@@ -24,22 +24,24 @@ const getPlayerStats = (id, season) => {
   })
 }
 
-const randomPlayer = () => {
+const randomPlayer = (callback) => {
   const playerID = getRandomPlayerID();
   const url = 'https://www.balldontlie.io/api/v1/players/' + playerID;
 
   request({url, json: true}, (error, {body}) => {
     if (error){
-      console.log('error');
+      callback('error');
     } else {
-      console.log(body.first_name + ' ' + body.last_name);
-      console.log(body.id);
+      callback(undefined, {
+        first_name : body.first_name,
+        last_name: body.last_name
+      })
       getPlayerStats(playerID, 2018)
     }
   })
 }
 
-randomPlayer();
+module.exports = randomPlayer;
 
 
 
