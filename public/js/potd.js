@@ -1,41 +1,32 @@
+const elements = ['games', 'min', 'pts', 'reb', 'ast', 'fgp', 'ftp'];
+const values = [];
+for (el in elements){
+  values.push(document.getElementById(elements[el]).textContent);
+}
+minutes = values[1].split(':');
+minutes = (parseInt(minutes[0]) + (parseInt(minutes[1])) / 60)
+values[1] = minutes;
+values[5] = values[5] * 100;
+values[6] = values[6] * 100;
 
-fetch('/potd').then((response) => {
-  response.json().then((data) => {
-    document.getElementById("name").textContent = data.first_name + ' ' + data.last_name;
-    document.getElementById("team").textContent = data.team;
-    const player_id = data.id;
-    fetch('/last_avgs?id=' + player_id).then((response) => {
-      response.json().then((data) => {
-        const table = {
-          season: ['season', data.season],
-          games: ['games', data.games],
-          min: ["min", data.min],
-          pts: ["pts", data.pts],
-          reb: ["reb", data.reb],
-          ast: ['ast', data.ast],
-          fgp: ["fgp", data.fgpct],
-          ftp: ['ftp', data.ftpct]
-        }
 
-        data.min = data.min.split(':');
-        data.min = (parseInt(data.min[0])) + (parseInt(data.min[1]) / 60)
 
-        for(prop in table){
-          document.getElementById(table[prop][0]).textContent = table[prop][1];
-          }
 
-          var ctx = document.getElementById('myChart').getContext('2d');
+//order of labels
+//games min pts rebs asst fgp ftp
 
-          var ctx = document.getElementById('myChart');
+var ctx = document.getElementById('stats').getContext('2d');
 
-          const myChart = new Chart(ctx, {
+          var ctx = document.getElementById('stats');
+
+          var myChart = new Chart(ctx, {
               type: 'line',
               data: {
                   labels: ['Games', 'Minutes', 'Points', 'Rebounds', 'Assists', 'FG%', 'FT%'],
                   datasets: [{
-
+                      fill: false,
                       label: 'Player of the Day',
-                      data: [data.games, data.min, data.pts, data.reb, data.ast, data.fgpct * 100, data.ftpct * 100],
+                      data: values,
                       backgroundColor: [
                           'rgba(0, 0, 0, .3)',
                           'rgba(0, 0, 0, 1)',
@@ -67,41 +58,14 @@ fetch('/potd').then((response) => {
                           }
                       }]
                   }
-              }
-            })
-          const kobe = document.getElementById("Kobe");
-          kobe.addEventListener("click", (e) => {
-            e.preventDefault();
-            kobe.classList.toggle("kobe_pale");
-            myChart.data.datasets.push({
-              fill: false,
-              label: "Kobe",
-              data: [82, 36, 26.84, 5.23, 4.87, 46.7, 85.6],
-              backgroundColor: [
-                'rgba(85, 37, 130, .8)',
-                'rgba(85, 37, 130, .8)',
-                'rgba(85, 37, 130, .8)',
-                'rgba(85, 37, 130, .8)',
-                'rgba(85, 37, 130, .8)',
-                'rgba(85, 37, 130, .8)',
-                'rgba(85, 37, 130, .8)',
-                'rgba(85, 37, 130, .8)',
-              ],
-              borderColor: [
-                'rgba(85, 37, 130, .8)',
-                'rgba(85, 37, 130, .8)',
-                'rgba(85, 37, 130, .8)',
-                'rgba(85, 37, 130, .8)',
-                'rgba(85, 37, 130, .8)',
-                'rgba(85, 37, 130, .8)',
-                'rgba(85, 37, 130, .8)',
+                }
+              })
 
-              ],
-              borderWidth: 2
-            })
-            myChart.update();
-            })
-          })
-          })
-          })
-        })
+
+
+//create chart with textcontent of table
+//this will allow is to export a global my chart variable
+//before the variable was trapped inside the scope of call back functions
+//my chart will need to be exported to all button functions
+//potd exports table into Chart
+//chart exports chart for use in button update chart modules

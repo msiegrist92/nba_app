@@ -26,19 +26,19 @@
         <th>FTP</th>
       </tr>
       <tr>
-        <td id="name"></td>
-        <td id="team"></td>
-        <td id="season"></td>
-        <td id="games"></td>
-        <td id="min"></td>
-        <td id="pts"></td>
-        <td id="reb"></td>
-        <td id="ast"></td>
-        <td id="fgp"></td>
-        <td id="ftp"></td>
+        <td id="name">{{name}}</td>
+        <td id="team">{{team}}</td>
+        <td id="season">{{season}}</td>
+        <td id="games">{{games}}</td>
+        <td id="min">{{minutes}}</td>
+        <td id="pts">{{points}}</td>
+        <td id="reb">{{rebounds}}</td>
+        <td id="ast">{{assists}}</td>
+        <td id="fgp">{{fgpct}}</td>
+        <td id="ftp">{{ftpct}}</td>
       </tr>
     </table>
-    <canvas id="myChart" width="100" height="100"></canvas>
+    <canvas id="stats" width="100" height="100"></canvas>
   </main>
   <aside>
     <h1>MVP Season Overlays</h1>
@@ -46,8 +46,15 @@
     <button id="Allen">AI</button>
     <button id="Derrick">DRose</button>
     <button id="Hakeem">Dream</button>
+    <button id="remove">Remove Last</button>
   </aside>
+  <script src="../js/updateChart.js" var updateChart;></script>
   <script src="../js/chart.js/dist/Chart.js"></script>
-  <script src="../js/potd.js"></script>
+  <script src="../js/potd.js"var myChart;></script>
+  <script src="../js/kobe.js"var kobe;></script>
+  <script src="../js/allen.js"var allen;></script>
+  <script src="../js/derrick.js"var derrick></script>
+  <script src="../js/hakeem.js"var hakeem></script>
+  <script src="../js/remove.js"></script>
 </body>
 </html>
