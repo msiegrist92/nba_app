@@ -26,8 +26,7 @@ app.use(express.static(public_dir));
 
 app.get('', (req, res) => {
   res.render("index", {
-    first_name: 'howdy',
-    last_name: "pardner"
+
   })
 })
 

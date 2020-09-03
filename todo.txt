@@ -1,0 +1,12 @@
+wire up 4 remaining buttons with color toggles
+host json files on webserver for fetching on button call
+when button is pressed
+	->retrieve player's mvp season from webserver routing
+	-> parse data and create new graph overlay
+
+
+potd grabber runs every 24 hours and overwrites data in local JSON files
+style the application
+responsive styles for application
+host on the internet
+

@@ -14,27 +14,27 @@ const getRandomPlayerID = () => Math.floor(Math.random() * 3268) + 1;
 //gets stats for most recent season
 const getPlayerStats = (id, season, callback) => {
   const url = 'https://www.balldontlie.io/api/v1/season_averages?season=' + season + '&player_ids[]=' + id
-  request({url, json: true}, (error, {body}) => {
-    if (body.data.length === 0){
+  request({url, json: true}, (error, {body : {data}}) => {
+    if (data.length === 0){
       getPlayerStats(id, season - 1, callback)
     } else {
       callback(undefined, {
-        games: body.data[0].games_played,
-        min: body.data[0].min,
-        season: body.data[0].season,
-        fgpct: body.data[0].fg_pct,
-        ftpct: body.data[0].ft_pct,
-        reb: body.data[0].reb,
-        ast: body.data[0].ast,
-        pts: body.data[0].pts
+        games: data[0].games_played,
+        min: data[0].min,
+        season: data[0].season,
+        fgpct: data[0].fg_pct,
+        ftpct: data[0].ft_pct,
+        reb: data[0].reb,
+        ast: data[0].ast,
+        pts: data[0].pts
       });
     }
   })
 }
 
 const randomPlayer = (callback) => {
-  const playerID = getRandomPlayerID();
-  // const playerID = 401;
+  // const playerID = getRandomPlayerID();
+  const playerID = 401;
   const url = 'https://www.balldontlie.io/api/v1/players/' + playerID;
 
   request({url, json: true}, (error, {body}) => {
