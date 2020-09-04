@@ -5,7 +5,7 @@ hakeem.addEventListener("click", (e) => {
   e.preventDefault();
   for(datasets in myChart.data.datasets){
     if(myChart.data.datasets[datasets].label === "Dream"){
-      hakee_found = true;
+      hakeem_found = true;
     }
   }
 

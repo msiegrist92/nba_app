@@ -159,7 +159,7 @@ aside button:hover{
 }
 
 .derrick_pale {
-  background-color: rgba(206, 17, 65, .5);
+  background-color: rgba(206, 17, 65, .5) !important;
 }
 
 #Hakeem {
@@ -168,7 +168,7 @@ aside button:hover{
 }
 
 .hakeem_pale {
-  background-color: rgba(255,  199,44, .5);
+  background-color: rgba(255, 199, 44, .5) !important;
 }
 
 #remove {

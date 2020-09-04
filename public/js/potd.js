@@ -20,7 +20,7 @@ var ctx = document.getElementById('stats').getContext('2d');
           var ctx = document.getElementById('stats');
 
           var myChart = new Chart(ctx, {
-              type: 'line',
+              type: 'bar',
               data: {
                   labels: ['Games', 'Minutes', 'Points', 'Rebounds', 'Assists', 'FG%', 'FT%'],
                   datasets: [{
@@ -28,7 +28,6 @@ var ctx = document.getElementById('stats').getContext('2d');
                       label: 'Player of the Day',
                       data: values,
                       backgroundColor: [
-                          'rgba(0, 0, 0, .3)',
                           'rgba(0, 0, 0, 1)',
                           'rgba(0, 0, 0, 1)',
                           'rgba(0, 0, 0, 1)',
