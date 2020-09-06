@@ -48,54 +48,6 @@ app.get('', (req, res) => {
   })
 })
 
-//response is JSON data containing player's first name, last name and API ID#
-app.get('/potd', (req, res) => {
-    api_req.randomPlayer((error, body) => {
-      if (error){
-        res.send({
-          error: error
-        })} else {
-          let name = {
-            first_name: body.first_name,
-            last_name: body.last_name,
-            team: body.team,
-            id: body.id
-          }
-          to_write = {name};
-          to_write = JSON.stringify(to_write);
-          fs.writeFile(json_files + '/potd.json', '[' + to_write + ',', (err) => {
-            if(err) return console.log(err);
-            console.log("written to potd file");
-          })
-          console.log(name.id);
-          api_req.getPlayerStats(name.id, 2018, (error, body) => {
-            if(error){
-              res.send({
-                error: error
-              })
-            } else {
-              let stats = {
-                games: body.games,
-                min: body.min,
-                season: body.season,
-                minutes: body.minutes,
-                fgpct: body.fgpct,
-                ftpct: body.ftpct,
-                reb: body.ftpct,
-                ast: body.ast,
-                pts: body.pts
-              }
-              to_write = {stats};
-              to_write = JSON.stringify(to_write);
-              fs.appendFile(json_files + '/potd.json', to_write + ']', (err) => {
-                if(err) return console.log(err);
-                console.log("written to potd file");
-              })
-        }
-      })
-    }
-  })
-});
 
 const toRefresh = () => {
   api_req.randomPlayer((error, body) => {
@@ -145,7 +97,7 @@ const toRefresh = () => {
 })
 };
 
-setInterval(toRefresh, 43200000);
+// setInterval(toRefresh, 5000);
 
 
 

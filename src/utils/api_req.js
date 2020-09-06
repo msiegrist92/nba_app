@@ -33,8 +33,8 @@ const getPlayerStats = (id, season, callback) => {
 }
 
 const randomPlayer = (callback) => {
-  const playerID = getRandomPlayerID();
-  //const playerID = 237;
+  // const playerID = getRandomPlayerID();
+  const playerID = 1368;
   const url = 'https://www.balldontlie.io/api/v1/players/' + playerID;
 
   request({url, json: true}, (error, {body}) => {
