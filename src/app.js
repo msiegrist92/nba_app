@@ -6,6 +6,7 @@ const express = require('express');
 const path = require('path');
 const hbs = require('hbs');
 const api_req = require('./utils/api_req');
+const potd = require("./utils/potd")
 
 //app is created
 const app = express();
@@ -33,22 +34,25 @@ app.get('', (req, res) => {
     } else {
       data = JSON.parse(data);
       res.render("index", {
-        name: data[0].name.first_name + ' ' +         data[0].name.last_name,
-        team: data[0].name.team,
-        season: data[1].stats.season,
-        games: data[1].stats.games,
-        minutes: data[1].stats.min,
-        points: data[1].stats.pts,
-        rebounds: data[1].stats.reb,
-        assists: data[1].stats.ast,
-        fgpct: data[1].stats.fgpct,
-        ftpct: data[1].stats.ftpct
+        //building potd table with data from JSON file
+        name: data[0].first_name + ' ' +         data[0].last_name,
+        team: data[0].team,
+        season: data[1].season,
+        games: data[1].games,
+        minutes: data[1].min,
+        points: data[1].pts,
+        rebounds: data[1].reb,
+        assists: data[1].ast,
+        fgpct: data[1].fgpct,
+        ftpct: data[1].ftpct
       })
     }
   })
 })
 
 
+//retrives new player of the day from balldontlie api
+//saves to ~/public/json/potd.json
 const toRefresh = () => {
   api_req.randomPlayer((error, body) => {
     if (error){
@@ -61,12 +65,7 @@ const toRefresh = () => {
           team: body.team,
           id: body.id
         }
-        to_write = {name};
-        to_write = JSON.stringify(to_write);
-        fs.writeFile(json_files + '/potd.json', '[' + to_write + ',', (err) => {
-          if(err) return console.log(err);
-          console.log("written to potd file");
-        })
+        potd.writeStart(name);
         console.log(name.id);
         api_req.getPlayerStats(name.id, 2018, (error, body) => {
           if(error){
@@ -85,12 +84,7 @@ const toRefresh = () => {
               ast: body.ast,
               pts: body.pts
             }
-            to_write = {stats};
-            to_write = JSON.stringify(to_write);
-            fs.appendFile(json_files + '/potd.json', to_write + ']', (err) => {
-              if(err) return console.log(err);
-              console.log("written to potd file");
-            })
+            potd.writeEnd(stats);
       }
     })
   }
@@ -98,7 +92,7 @@ const toRefresh = () => {
 };
 
 // setInterval(toRefresh, 5000);
-
+// toRefresh();
 
 
 

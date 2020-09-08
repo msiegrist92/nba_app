@@ -121,15 +121,14 @@ canvas {
 }
 
 aside {
-  margin: 0 auto;
+  margin: 0 auto 5% auto;
   max-width: 960px;
   display: grid;
-  grid-template-rows: repeat(3, auto);
+  grid-template-rows: repeat(2, auto);
   grid-template-columns: repeat(4, 1fr);
   grid-template-areas:
     "h1 h1 h1 h1"
-    "kobe allen derrick hakeem"
-    ". remove remove .";
+    "kobe allen derrick hakeem";
 }
 
 aside h1 {
@@ -187,13 +186,6 @@ aside button:hover{
   background-color: rgba(255, 199, 44, .5) !important;
 }
 
-#remove {
-  grid-area: remove;
-  width: 80%;
-  background-color: black;
-  margin-bottom: 10%;
-}
-
 footer {
   width: 100%;
 }
@@ -235,8 +227,7 @@ footer p {
     grid-template-areas:
       "h1 h1 h1 h1"
       "kobe kobe derrick derrick"
-      "allen allen hakeem hakeem"
-      ". remove remove ."
+      "allen allen hakeem hakeem";
   }
 
   aside button {
@@ -244,9 +235,6 @@ footer p {
     font-size: .8rem;
   }
 
-  #remove {
-    margin-top: 5%;
-  }
 
   canvas {
     width: 80% !important;
@@ -269,6 +257,10 @@ footer p {
     grid-template-columns: 20% 80%;
     grid-template-areas:
     "img nav";
+  }
+
+  nav ul li a {
+    font-size: 1rem;
   }
 
   header img {

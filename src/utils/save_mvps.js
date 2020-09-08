@@ -34,7 +34,10 @@ const getMVPSeason = (season, id, name) => {
   }
 })
 }
-//kobe
+
+
+
+
 
 getMVPSeason(2007, 1043, 'Kobe Bryant');
 getMVPSeason(2010, 401, "Derrick Rose");
