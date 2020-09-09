@@ -1,3 +1,6 @@
+//sets up blank chart for adding custom data
+//exports global var myChart
+
 var ctx = document.getElementById('chart').getContext('2d');
 
 var ctx = document.getElementById('chart');

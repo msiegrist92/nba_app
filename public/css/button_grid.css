@@ -7,6 +7,10 @@
     "player_5 player_6 player_7 player_8"
 }
 
+#btn_grid button {
+  width: 75%;
+}
+
 #player_1 {
   grid-area: player_1;
 }
