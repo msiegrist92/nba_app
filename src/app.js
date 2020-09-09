@@ -5,8 +5,10 @@ const fs = require('fs');
 const express = require('express');
 const path = require('path');
 const hbs = require('hbs');
-const api_req = require('./utils/api_req');
+const random_player = require('./utils/random_player');
 const potd = require("./utils/potd")
+const search = require("./utils/player_search")
+const rp = require('request-promise');
 
 //app is created
 const app = express();
@@ -50,11 +52,84 @@ app.get('', (req, res) => {
   })
 })
 
+app.get('/find', (req, res) => {
+  res.render('find');
+})
+
+app.get('/name_search', (req,res) => {
+
+  if(!req.query.name){
+    res.send("No name provided");
+  }
+
+  var options = {
+    uri: 'https://www.balldontlie.io/api/v1/players?search=' + req.query.name,
+    json: true
+  }
+
+  rp(options)
+    .then((body) => {
+
+      if(!body.data[0]){
+        const error = {
+          error: 'No data for this player'
+        }
+        res.send(error)
+      } else {
+
+        data = body.data[0];
+          const player = {
+            id: data.id,
+            name: data.first_name + ' ' + data.last_name,
+            team: data.team.abbreviation
+          }
+          res.send(player)
+        }
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+})
+
+app.get('/stats_search', (req, res) => {
+
+  var options = {
+    uri: 'https://www.balldontlie.io/api/v1/season_averages?season=' + req.query.season + '&player_ids[]=' + req.query.id,
+    json: true
+  }
+
+  rp(options)
+    .then((body) => {
+
+      if(!body.data[0]){
+        const error = {
+          error: 'No data for this season'
+        }
+        res.send(error)
+      } else {
+        data = body.data[0];
+        const stats = {
+          games: data.games_played,
+          min: data.min,
+          pts: data.pts,
+          reb: data.reb,
+          ast: data.ast,
+          fgp: data.fg_pct,
+          ftp: data.ft_pct
+        }
+        res.send(stats)
+        }
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+})
+
 
 //retrives new player of the day from balldontlie api
 //saves to ~/public/json/potd.json
 const toRefresh = () => {
-  api_req.randomPlayer((error, body) => {
+  random_player.randomPlayer((error, body) => {
     if (error){
       res.send({
         error: error
@@ -67,7 +142,7 @@ const toRefresh = () => {
         }
         potd.writeStart(name);
         console.log(name.id);
-        api_req.getPlayerStats(name.id, 2018, (error, body) => {
+        random_player.getPlayerStats(name.id, 2018, (error, body) => {
           if(error){
             res.send({
               error: error

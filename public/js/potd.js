@@ -1,3 +1,5 @@
+//potd table is built from file in hbs in app.js
+//pulling values from the table to add to the chart on page load
 const elements = ['games', 'min', 'pts', 'reb', 'ast', 'fgp', 'ftp'];
 const values = [];
 for (el in elements){
