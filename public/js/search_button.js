@@ -1,9 +1,10 @@
 const form = document.querySelector('form');
 const name_el = document.getElementById("name");
 const season_el = document.getElementById('season');
-const p_name = document.getElementById('p_name');
-const p_team = document.getElementById('p_team');
-const p_id = document.getElementById('p_id');
+const msg_el = document.getElementById('msg');
+
+const buttons = ['player_1', "player_2", 'player_3', 'player_4',
+  'player_5', 'player_6', 'player_7', 'player_8'];
 
 const minsToGraph = mins => {
   mins = mins.split(':');
@@ -20,21 +21,23 @@ form.addEventListener('submit', (e) => {
   fetch('/name_search?name=' + search_name).then((response) => {
     response.json().then((data) => {
       if (data.error){
-        p_name.textContent = data.error;
+        msg_el.textContent = data.error;
       } else {
         fetch('/stats_search?id=' + data.id + '&season=' + search_season).then((response) => {
           response.json().then((data_2) => {
             if (data_2.error){
-              p_name.textContent = data_2.error;
+              msg_el.textContent = data_2.error;
             } else {
               let player = {
-                label: data.name,
+                label: data.name + ' ' + search_season,
                 data: [data_2.games, minsToGraph(data_2.min), data_2.pts, data_2.reb, data_2.ast, data_2.fgp * 100, data_2.ftp * 100],
                 color: chooseColor(colors, myChart.data.datasets.length),
                 fill: false,
                 borderWidth: 2
               };
-              console.log(player)
+              document.getElementById(buttons[myChart.data.datasets.length]).textContent = player.label;
+              document.getElementById(buttons[myChart.data.datasets.length]).style.backgroundColor = player.color;
+              document.getElementById(buttons[myChart.data.datasets.length]).style.color = 'white';
               myChart.data.datasets.push(
                 {
                   fill: player.fill,
