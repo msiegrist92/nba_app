@@ -5,17 +5,10 @@ const values = [];
 for (el in elements){
   values.push(document.getElementById(elements[el]).textContent);
 }
-minutes = values[1].split(':');
-minutes = (parseInt(minutes[0]) + (parseInt(minutes[1])) / 60)
-values[1] = minutes;
+
+values[1] = minsToGraph(values[1])
 values[5] = values[5] * 100;
 values[6] = values[6] * 100;
-
-
-
-
-//order of labels
-//games min pts rebs asst fgp ftp
 
 var ctx = document.getElementById('stats').getContext('2d');
 

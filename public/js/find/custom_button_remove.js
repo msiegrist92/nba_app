@@ -10,6 +10,7 @@ const removeData = button_el => {
   datasets.splice(found_index, 1);
   myChart.update();
   button_el.textContent = '';
+  button_el.style.width = "10%"
 }
 
 const button_1 = document.getElementById(buttons[0]);
