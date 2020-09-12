@@ -68,3 +68,15 @@ button_8.addEventListener('click', (e) => {
   e.preventDefault();
   removeData(button_8);
 })
+
+document.getElementById('remove').addEventListener('click', () => {
+
+  for (button of buttons){
+    if (document.getElementById(button).textContent.length > 0){
+      removeData(document.getElementById(button));
+    }
+  }
+  myChart.data.datasets = [];
+  myChart.update();
+
+})

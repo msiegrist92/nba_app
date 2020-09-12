@@ -56,6 +56,10 @@ app.get('/find', (req, res) => {
   res.render('find');
 })
 
+app.get('/about', (req,res) => {
+  res.render('about');
+})
+
 app.get('/name_search', (req,res) => {
 
   if(!req.query.name){
@@ -166,8 +170,8 @@ const toRefresh = () => {
 })
 };
 
-// setInterval(toRefresh, 5000);
-// toRefresh();
+// setInterval(toRefresh, 50000);
+
 
 
 

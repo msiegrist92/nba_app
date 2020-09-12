@@ -33,14 +33,14 @@ const getPlayerStats = (id, season, callback) => {
 }
 
 const randomPlayer = (callback) => {
-  // const playerID = getRandomPlayerID();
-  const playerID = 237;
+  const playerID = getRandomPlayerID();
+  // const playerID = 237;
   const url = 'https://www.balldontlie.io/api/v1/players/' + playerID;
 
   request({url, json: true}, (error, {body}) => {
     if (error){
       callback('error');
-    } else if(!body.team.abbreviation) {
+    } else if(!body.team) {
       res.send('No team data found for this player please refresh')
     }
      else {

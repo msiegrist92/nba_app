@@ -5,6 +5,16 @@ rgba(245, 249, 255, 1) - pale white
 rgba(56, 56, 56, 1) - dark grey
 */
 
+header {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+header a {
+  text-decoration: none;
+  color: black;
+}
+
 body {
   background-color: rgba(245, 249, 255, 1);
   color: rgba(56, 56, 56, 1);
@@ -16,31 +26,6 @@ main {
     max-width: 960px;
 }
 
-table {
-  width: 75%;
-  margin: 2% auto;
-  padding: .5rem;
-  text-align: center;
-}
-
-tr, th, td {
-  padding: .5rem;
-}
-
-tr {
-  font-size: 1.25rem;
-}
-
-td {
-  font-size: 1rem;
-  font-family: 'Bitter', serif;
-}
-
-th {
-  font-family: "Martel", serif;
-  border-bottom: 2px solid rgba(0, 81, 255, 1);
-}
-
 h2 {
   width: 75%;
   margin: 2% auto 0 auto;
@@ -48,6 +33,31 @@ h2 {
   text-align: center;
   font-size: 2rem;
   font-family: "Alata", sans-serif;
+}
+
+@media only screen and (max-width: 650px){
+  h2 {
+    font-size: 2rem;
+  }
+}
+
+@media only screen and (max-width: 505px){
+  header h1 {
+    font-size: 1.5rem;
+  }
+}
+
+@media only screen and (max-width: 440px){
+  h2 {
+    font-size: 1.5rem;
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width: 350px){
+  h2 {
+    font-size: 1.25rem;
+  }
 }
 
 p {
@@ -120,79 +130,16 @@ canvas {
   font-size: 2rem;
 }
 
-aside {
-  margin: 0 auto 5% auto;
-  max-width: 960px;
-  display: grid;
-  grid-template-rows: repeat(2, auto);
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-areas:
-    "h1 h1 h1 h1"
-    "kobe allen derrick hakeem";
-}
-
-aside h1 {
-  margin: 2% auto 2% auto;
-  text-align: center;
-  grid-area: h1;
-  font-family: "Alata", sans-serif;
-}
-
-aside button {
-  width: 75%;
-  font-family: "Alata", sans-serif;
-  margin: 2% auto 2% auto;
-  padding: .5rem 1rem;
-  color: white;
-}
-
-aside button:hover{
-  cursor: pointer;
-}
-
-#Kobe {
-  grid-area: kobe;
-  background-color: rgba(85, 37, 130, 1);
-}
-
-.kobe_pale {
-  background-color: rgba(85, 37, 130, .5) !important;
-}
-
-#Allen {
-  grid-area: allen;
-  background-color: rgba(187, 151, 84, 1);
-}
-
-.allen_pale {
-  background-color: rgba(187, 151, 84, .5) !important;
-}
-
-#Derrick {
-  grid-area: derrick;
-  background-color: rgba(206, 17, 65, 1);
-}
-
-.derrick_pale {
-  background-color: rgba(206, 17, 65, .5) !important;
-}
-
-#Hakeem {
-  grid-area: hakeem;
-  background-color: rgba(255,  199,44, 1);
-}
-
-.hakeem_pale {
-  background-color: rgba(255, 199, 44, .5) !important;
-}
 
 footer {
   width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 footer p {
   text-align: right;
-  float: right;
+  width: 100%;
 }
 
 
@@ -224,35 +171,11 @@ footer p {
 
 @media only screen and (max-width: 460px){
 
-  aside {
-    grid-template-areas:
-      "h1 h1 h1 h1"
-      "kobe kobe derrick derrick"
-      "allen allen hakeem hakeem";
-  }
-
-  aside button {
-    width: 75%;
-    font-size: .8rem;
-  }
-
-
   canvas {
     width: 80% !important;
     height: 80% !important;
   }
 
-  table {
-    width: 95%;
-  }
-
-  table th {
-    font-size: .75rem;
-  }
-
-  th, tr, td {
-    padding: .1rem;
-  }
 
   header {
     grid-template-columns: 20% 80%;
@@ -275,23 +198,5 @@ footer p {
   #title {
     display: none;
   }
-
-}
-
-/*table styles for very small screens*/
-@media only screen and (max-width: 360px){
-  table {
-    width: 100%;
-    padding: 0;
-  }
-
-  table th {
-    font-size: .75rem;
-  }
-
-  table td {
-    font-size: .5rem;
-  }
-
 
 }

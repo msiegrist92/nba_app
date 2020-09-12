@@ -14,7 +14,7 @@ const buttons = ['player_1', "player_2", 'player_3', 'player_4',
 
 //no buttons are to be displayed upon page load
 for (button of buttons){
-  document.getElementById(button).style.width = "10%";
+  document.getElementById(button).style.width = "5%";
 }
 
 //converts string 12:30 to int 12.5
@@ -32,7 +32,7 @@ const setButtonStyles = (index, player) => {
   let styles = {
     "backgroundColor": player.color,
     "color": "white",
-    "width": "75%"
+    "width": "90%"
   }
   Object.assign(element.style, styles)
 }

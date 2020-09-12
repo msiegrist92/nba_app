@@ -1,17 +1,19 @@
 #btn_grid {
   max-width: 960px;
-  grid-gap: 1rem;
   margin-bottom: 15%;
+  grid-row-gap: .5rem;
   display: grid;
-  grid-template-rows: repeat(2, auto);
-  grid-template-columns: repeat(4, auto);
+  grid-template-rows: repeat(3, auto);
+  grid-template-columns: repeat(4, 25%);
   grid-template-areas:
     "player_1 player_2 player_3 player_4"
     "player_5 player_6 player_7 player_8"
+    ". remove remove ."
 }
 
 #btn_grid button {
-  width: 90px;
+  font-family: "Bitter", serif;
+  font-size: 1rem;
   height: 45px;
   margin: 0 auto;
   transition: width 1.5s;
@@ -50,14 +52,13 @@
   grid-area: player_8;
 }
 
-#msg {
-  color: black;
-  font-family: "Alata", sans-serif;
-  font-size: 2.5rem;
-  text-align: center;
-  width: 100%;
-  margin: 2% auto;
+#remove {
+  grid-area: remove;
+  width: 60% !important;
+  margin-top: 10% !important;
+  font-size: 1rem !important;
 }
+
 
 form {
   display: grid;
@@ -102,14 +103,14 @@ form label {
   width: 80%;
 }
 
-@media only screen and (max-width: 650px){
-  #msg {
-    font-size: 2rem;
+
+@media only screen and (max-width: 560px){
+  #btn_grid button {
+    font-size: .75rem;
   }
 }
 
 @media only screen and (max-width: 520px){
-
   form {
     width: 80%;
   }
@@ -118,9 +119,7 @@ form label {
     font-size: .8rem;
   }
 }
-
-@media only screen and (max-width: 440px){
-  #msg {
-    font-size: 1.5rem;
+  #btn_grid button {
+    font-size: .6rem;
   }
 }

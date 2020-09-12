@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/index.css">
   <link href="https://fonts.googleapis.com/css2?family=Alata&family=Bitter:wght@300&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Martel&display=swap" rel="stylesheet">
 
@@ -40,14 +41,15 @@
       </tr>
     </table>
     <canvas id="stats" width="100" height="100"></canvas>
+    <aside>
+      <h2>MVP Season Overlays</h2>
+      <button id="Kobe">Kobe</button>
+      <button id="Allen">AI</button>
+      <button id="Derrick">DRose</button>
+      <button id="Hakeem">Dream</button>
+      <button id='callto'><a href="/find">Build Your Own Graph!</a></button>
+    </aside>
   </main>
-  <aside>
-    <h1>MVP Season Overlays</h1>
-    <button id="Kobe">Kobe</button>
-    <button id="Allen">AI</button>
-    <button id="Derrick">DRose</button>
-    <button id="Hakeem">Dream</button>
-  </aside>
   {{>footer}}
   <script src="../js/potd/updateChart.js" var updateChart, var removePlayer, var minsToGraph, var buttonController;></script>
   <script src="../js/chart.js/dist/Chart.js"></script>

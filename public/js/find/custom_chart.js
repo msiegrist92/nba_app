@@ -37,7 +37,7 @@ var myChart = new Chart(ctx, {
 const mobileFont = query_1 => {
   if (query_1.matches){
     myChart.options.scales.yAxes[0].ticks.fontSize = 14;
-    myChart.options.scales.xAxes[0].ticks.fontSize = 16;
+    myChart.options.scales.xAxes[0].ticks.fontSize = 14;
     myChart.options.legend.labels.fontSize = 16;
   }
 }
