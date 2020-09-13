@@ -15,8 +15,8 @@ const getRandomPlayerID = () => Math.floor(Math.random() * 3268) + 1;
 const getPlayerStats = (id, season, callback) => {
   const url = 'https://www.balldontlie.io/api/v1/season_averages?season=' + season + '&player_ids[]=' + id
   request({url, json: true}, (error, {body : {data}}) => {
-    if (data.length === 0){
-      getPlayerStats(id, season - 1, callback)
+    if (!data[0]){
+      return getPlayerStats(id, season - 1, callback)
     } else {
       callback(undefined, {
         games: data[0].games_played,

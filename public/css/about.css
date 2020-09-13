@@ -16,16 +16,6 @@ h2 {
   grid-area: h2;
 }
 
-.about_p {
-  padding: 1.5rem;
-  border-top: 2px solid rgba(255, 0, 72, 1);
-  border-bottom: 2px solid rgba(0, 81, 255, 1);
-  font-style: normal;
-  font-size: 1rem;
-  margin-top: 5%;
-  font-family: "Martel", sans-serif;
-  line-height: 140%;
-}
 
 footer {
   grid-area: footer;
