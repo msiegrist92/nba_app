@@ -1,4 +1,4 @@
-//main js which adds and determines functionality of search button
+//contains logic for search button API requests and form handling
 
 const form = document.querySelector('form');
 const name_el = document.getElementById("name");
@@ -13,7 +13,7 @@ form.addEventListener('submit', (e) => {
   }
 
   //retrieving user input from form
-  const search_name = name_el.value;
+  const search_name = name_el.value.trim();
   const search_season = season_el.value;
 
   //API request to /name_search
@@ -40,7 +40,9 @@ form.addEventListener('submit', (e) => {
               //player object is created for passing to setButtonStyles (utils.js)
               let player = {
                 label: data.name + ' ' + search_season,
-                data: [data_2.games, minsToGraph(data_2.min), data_2.pts, data_2.reb, data_2.ast, data_2.fgp * 100, data_2.ftp * 100],
+                data: [data_2.games, minsToGraph(data_2.min),
+                  data_2.pts, data_2.reb, data_2.ast,
+                  data_2.fgp * 100, data_2.ftp * 100],
                 color: chooseColor(colors, index),
                 fill: false,
                 borderWidth: 2

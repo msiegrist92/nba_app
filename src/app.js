@@ -36,7 +36,7 @@ app.use(api_routers);
 
 //retrives new player of the day from balldontlie api
 //saves to ~/public/json/potd.json
-potd_refresh.refresh();
+// potd_refresh.refresh();
 
 
 
