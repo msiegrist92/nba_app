@@ -5,7 +5,8 @@
   "main": "api_req.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon src/app.js -e hbs,js,css"
+    "dev": "nodemon src/app.js -e hbs,js,css",
+    "start": "node src/app.js"
   },
   "author": "",
   "license": "ISC",

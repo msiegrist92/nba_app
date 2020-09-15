@@ -7,6 +7,8 @@ const page_routers = require('./routers/page_routers.js');
 const api_routers = require('./routers/api_routers.js');
 const potd_refresh = require('./utils/potd_refresh.js');
 
+const PORT = process.env.PORT || 3000;
+
 //app is created
 const app = express();
 
@@ -37,11 +39,11 @@ app.use(api_routers);
 //retrives new player of the day from balldontlie api
 //saves to ~/public/json/potd.json
 // potd_refresh.refresh();
+setInterval(potd_refresh.refresh, 300000);
 
 
 
 
-
-app.listen(3000, () => {
+app.listen(PORT, () => {
   console.log("Server is up on port 3000");
 })
